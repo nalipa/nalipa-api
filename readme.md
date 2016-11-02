@@ -1,4 +1,4 @@
-# nalipa Laravel api
+# nalipa laravel api
 
 
 This is extensive Laravel powered backend for nalipa web  and nalipa mobile applicatons.
