@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Nalipa
+                    Nalipa <input value="<?php echo $baseurl = url();?>"/>
                 </div>
 
                 <div class="links">

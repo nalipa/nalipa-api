@@ -21,6 +21,10 @@ class UserController extends Controller
 
 
 
+
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,7 +73,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::find($id)->load('role');
     }
 
 

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login','Auth\LoginController@login');
+Route::post('logout','Auth\LoginController@logout');
 Route::get('me','Auth\LoginController@authenticatedUser');
 Route::get('csrf','UserController@getcsrftoken');
 
@@ -26,6 +27,11 @@ Route::get('csrf','UserController@getcsrftoken');
     Route::resource('selcomTransactions', 'SelcomTransactionController');
     Route::resource('stripeTransactions', 'StripeTransactionController');
     Route::resource('answers', 'AnswerController');
+
+
+    // get objects by user Id
+    Route::get('userTransactions/{user_id}','TransactionController@userTransactions');
+    Route::get('userOrders/{user_id}','OrderController@userOrders');
 
 //});
 

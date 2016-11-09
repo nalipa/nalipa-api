@@ -15,58 +15,59 @@ class ResourceController extends Controller
      */
     public function index()
     {
+
         $vailable_resources = array(
             'orders'=>array(
                 'name'=>'orders',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/orders'
+                'url'=>url('/').'/api/orders'
             ),
            'providers'=> array(
                'name'=>'providers',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/serviceProviders'
+                'url'=>url('/').'/api/serviceProviders'
             ),
             'users'=> array(
                 'name'=>'users',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/users'
+                'url'=>url('/').'/api/users'
             ),
             'transactions'=> array(
                 'name'=>'transactions',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/transactions'
+                'url'=>url('/').'/api/transactions'
             ),
             'selcomTransactions'=> array(
                 'name'=>'selcomTransactions',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/selcomTransactions'
+                'url'=>url('/').'/api/selcomTransactions'
             ),
             'stripeTransactions'=> array(
                 'name'=>'stripeTransactions',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/stripeTransactions'
+                'url'=>url('/').'/api/stripeTransactions'
             ),
             'countries'=> array(
                 'name'=>'countries',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/countries'
+                'url'=>url('/').'/api/countries'
             ),
             'answers'=> array(
                 'name'=>'answers',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/answers'
+                'url'=>url('/').'/api/answers'
             ),
             'amounts'=> array(
                 'name'=>'amounts',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/amounts'
+                'url'=>url('/').'/api/amounts'
             ),
             'securityQuestions'=> array(
                 'name'=>'securityQuestions',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/securityQuestions'
+                'url'=>url('/').'/api/securityQuestions'
             ),
             'utilityCodes'=> array(
                 'name'=>'utilityCodes',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/utilityCodes'
+                'url'=>url('/').'/api/utilityCodes'
             ),
             'providerTypes'=> array(
                 'name'=>'providerTypes',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/providerTypes'
+                'url'=>url('/').'/api/providerTypes'
             ),
             'roles'=> array(
                 'name'=>'roles',
-                'url'=>'http://localhost/nalipa_api/public/index.php/api/roles'
+                'url'=>url('/').'/api/roles'
             )
         );
 

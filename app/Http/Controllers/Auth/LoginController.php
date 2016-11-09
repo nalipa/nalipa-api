@@ -43,11 +43,22 @@ class LoginController extends Controller
 
     public function login(Request $request){
         if (Auth::attempt(['email' =>$request->email, 'password' => $request->password])) {
-            // Authentication passed...
+
+            Auth::login(Auth::User(), true);
             return response()->json(Auth::User());
         } else {
             return response()->json('login failed');
         }
+    }
+
+    public function logout(Request $request){
+        return response()->json(Auth::User());
+//        if (Auth::attempt(['email' =>$request->email, 'password' => $request->password])) {
+//            // Authentication passed...
+//            return response()->json(Auth::User());
+//        } else {
+//            return response()->json('login failed');
+//        }
     }
 
     public function authenticatedUser()

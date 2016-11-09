@@ -19,7 +19,16 @@ class OrderController extends Controller
         return Order::all();
     }
 
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $user_id
+     * @return \Illuminate\Http\Response
+     */
+    public function userOrders($user_id)
+    {
+        return Order::all()->where('user_id','=',$user_id);
+    }
 
     /**
      * Store a newly created resource in storage.
