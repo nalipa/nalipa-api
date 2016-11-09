@@ -15,7 +15,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user)
+    public function index()
     {
         return Transaction::all()->load('service_provider.utility_code');
     }
