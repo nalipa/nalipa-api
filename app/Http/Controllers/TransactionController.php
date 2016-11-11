@@ -57,7 +57,7 @@ class TransactionController extends Controller
                     <member>
                     <name>pin</name>
                     <value>
-                    <string>".$request->pinNumber."</string>
+                    <string>1234</string>
                     </value>
                     </member>
                     <member>
