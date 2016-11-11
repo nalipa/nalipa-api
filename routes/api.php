@@ -32,6 +32,7 @@ Route::get('csrf','UserController@getcsrftoken');
     // get objects by user Id
     Route::get('userTransactions/{user_id}','TransactionController@userTransactions');
     Route::get('userOrders/{user_id}','OrderController@userOrders');
+    Route::post('rechargeCustomer','TransactionController@rechargeCustomer');
 
 //});
 

@@ -35,6 +35,81 @@ class TransactionController extends Controller
 
 
     /**
+     * process selcom payment.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function rechargeCustomer(Request $request)
+    {
+        $xml_data ="<methodCall>
+                    <methodName>SELCOM.utilityPayment</methodName>
+                    <params>
+                    <param>
+                    <value>
+                    <struct>
+                    <member>
+                    <name>vendor</name>
+                    <value>
+                    <string>BIONICIT</string>
+                    </value>
+                    </member>
+                    <member>
+                    <name>pin</name>
+                    <value>
+                    <string>".$request->pinNumber."</string>
+                    </value>
+                    </member>
+                    <member>
+                    <name>utilitycode</name>
+                    <value>
+                    <string>".$request->utilityCode."</string>
+                    </value>
+                    </member>
+                    <member>
+                    <name>utilityref</name>
+                    <value>
+                    <string>".$request->utilityRef."</string>
+                    </value>
+                    </member>
+                    <member>
+                    <name>transid</name>
+                    <value>
+                    <string>".$request->transactionId."</string>
+                    </value>
+                    </member>
+                    <member>
+                    <name>amount</name>
+                    <value>
+                    <string>".$request->amount."</string>
+                    </value>
+                    </member>
+                    </struct>
+                    </value>
+                    </param>
+                    </params>
+                    </methodCall>";
+
+
+        $URL = "https://paypoint.selcommobile.com/api/selcom.pos.server.php";
+
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$URL);
+//        curl_setopt($ch, CURLOPT_MUTE, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_data");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $selcomResponse = curl_exec($ch);
+        curl_close($ch);
+        return response($selcomResponse);
+    }
+
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
