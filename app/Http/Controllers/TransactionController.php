@@ -57,7 +57,7 @@ class TransactionController extends Controller
                     <member>
                     <name>pin</name>
                     <value>
-                    <string>1234</string>
+                    <string>1976</string>
                     </value>
                     </member>
                     <member>
