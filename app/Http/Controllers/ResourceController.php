@@ -71,7 +71,7 @@ class ResourceController extends Controller
             )
         );
 
-        return json_encode($vailable_resources);
+        return response($vailable_resources);
     }
 
     /**

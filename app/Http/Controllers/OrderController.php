@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return Order::all();
+        return Order::all()->load('transaction');
     }
 
     /**
@@ -27,7 +27,7 @@ class OrderController extends Controller
      */
     public function userOrders($user_id)
     {
-        return Order::all()->where('user_id','=',$user_id);
+        return Order::all()->where('user_id','=',$user_id)->load('transaction');
     }
 
     /**
