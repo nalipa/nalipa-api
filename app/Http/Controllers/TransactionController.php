@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 
@@ -29,7 +30,9 @@ class TransactionController extends Controller
      */
     public function userTransactions($user_id)
     {
-        return Transaction::all()->where('user_id','=',$user_id)->load('service_provider.utility_code');
+//       return Transaction::all()->where('user_id','=',$user_id)->load('service_provider.utility_code');
+       return Transaction::with('service_provider.utility_code')->where('user_id','=',$user_id)->get();
+
     }
 
 

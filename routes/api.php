@@ -17,6 +17,11 @@ Route::post('login','Auth\LoginController@login');
 Route::post('logout','Auth\LoginController@logout');
 Route::get('me','Auth\LoginController@authenticatedUser');
 Route::get('csrf','UserController@getcsrftoken');
+Route::get('mailUs','UserController@mailUs');
+
+Route::post('system','SystemController@addSystemInfo');
+Route::get('system','SystemController@getSystemInfo');
+Route::put('system','SystemController@updateSystemInfo');
 
 //Route::group(array('middleware' => 'auth:api'), function()
 //{

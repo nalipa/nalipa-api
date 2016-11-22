@@ -20,11 +20,6 @@ class UserController extends Controller
     }
 
 
-
-
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -65,6 +60,8 @@ class UserController extends Controller
 
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -75,7 +72,6 @@ class UserController extends Controller
     {
         return User::find($id)->load('role');
     }
-
 
 
     /**
@@ -107,7 +103,9 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
 
-            $user->save();
+            if ($user->save()){
+                return response($user);
+            }
         }
 
 
@@ -138,4 +136,5 @@ class UserController extends Controller
     {
         return response()->json(Crypt::encrypt(csrf_token()));
     }
+
 }
