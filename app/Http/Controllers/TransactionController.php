@@ -144,6 +144,33 @@ class TransactionController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function notifyBySMS(Request $request)
+    {
+        $username = "bionictz";
+        $password = "bionicsms";
+        $apikey   = "d2006f82-c381-11e0-bbe6-00185176683e";
+        $destnum  = urlencode("+255".substr($request->recipient_number,1,9));
+        $sendername = "Nalipa";
+        $sms = urlencode($request->sms);
+
+
+        $posturl = "http://www.bongolive.co.tz/api/sendSMS.php?sendername=".$sendername."&username=".$username."&password=".$password."&apikey=".$apikey."&destnum=".$destnum."&message=".$sms;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$posturl);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        $response=curl_exec($ch);
+
+        return response($response);
+
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

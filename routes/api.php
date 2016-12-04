@@ -19,6 +19,7 @@ Route::get('me','Auth\LoginController@authenticatedUser');
 Route::get('csrf','UserController@getcsrftoken');
 Route::get('mailUs','UserController@mailUs');
 
+Route::post('notifyBySMS','TransactionController@notifyBySMS');
 Route::post('system','SystemController@addSystemInfo');
 Route::get('system','SystemController@getSystemInfo');
 Route::put('system','SystemController@updateSystemInfo');
