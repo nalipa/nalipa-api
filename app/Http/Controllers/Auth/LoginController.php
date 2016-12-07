@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\UserRoles;
 use App\Http\Requests;
 
 class LoginController extends Controller
@@ -45,28 +46,29 @@ class LoginController extends Controller
         if (Auth::attempt(['email' =>$request->email, 'password' => $request->password])) {
 
             Auth::login(Auth::User(), true);
-            return response()->json(Auth::User());
+            $authenicatedUser = Auth::User();
+            $user = User::find($authenicatedUser->id)->load('user_role.roles');
+            return response()->json($user);
         } else {
             return response()->json('login failed');
         }
     }
 
     public function logout(Request $request){
+
         return response()->json(Auth::User());
-//        if (Auth::attempt(['email' =>$request->email, 'password' => $request->password])) {
-//            // Authentication passed...
-//            return response()->json(Auth::User());
-//        } else {
-//            return response()->json('login failed');
-//        }
     }
 
     public function authenticatedUser()
     {
         if (Auth::check()){
-            return response()->json(Auth::user());
+            $authenicatedUser = Auth::User();
+            $user = User::find($authenicatedUser->id)->load('user_role.roles');
+            return response()->json($user);
         }else{
-            return response()->json(Auth::User());
+            $authenicatedUser = Auth::User();
+            $user = User::find($authenicatedUser->id)->load('user_role.roles');
+            return response()->json($user);
         }
     }
 

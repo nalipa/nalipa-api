@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all()->load('user_role');
+        return User::all()->load('user_role.roles');
     }
 
 
@@ -78,7 +78,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::find($id)->load('user_role');
+        return User::find($id)->load('user_role.roles');
     }
 
 
