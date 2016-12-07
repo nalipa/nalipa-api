@@ -31,8 +31,8 @@ class User extends Authenticatable
 
     //get roles associated with user
 
-    public function role(){
-        return $this->belongsTo('App\Role','role_id','id');
+    public function user_role(){
+        return $this->hasMany('App\UserRoles','user_id','id');
     }
 
 

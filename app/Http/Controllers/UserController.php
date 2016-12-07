@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests;
+use App\UserRoles;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all()->load('role');
+        return User::all()->load('user_role');
     }
 
 
@@ -30,7 +31,6 @@ class UserController extends Controller
     {
         $user = new User();
 
-        $user->role_id = $request->input('role_id',1);
         $user->first_name = $request->first_name;
         $user->middle_name = $request->middle_name;
         $user->last_name = $request->last_name;
@@ -49,6 +49,14 @@ class UserController extends Controller
         if ($user->save()) {
 
             $user = User::find($user->id);
+            $user_role = UserRoles();
+            $user_role->user_id = $user->id;
+            $user_role->role_id = 2; // client
+
+            if ($user_role->save()){
+                $user = User::find($user->id)->load('user_role');
+                return response()->json($user);
+            }
 
             return response()->json($user);
 
@@ -70,7 +78,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::find($id)->load('role');
+        return User::find($id)->load('user_role');
     }
 
 
