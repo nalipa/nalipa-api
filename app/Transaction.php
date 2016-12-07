@@ -17,7 +17,7 @@ class Transaction extends Model
     // get user associated with transaction
 
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     // get service provider associated with transaction

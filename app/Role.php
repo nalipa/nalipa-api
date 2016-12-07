@@ -12,5 +12,10 @@ class Role extends Model
         return $this->hasMany('App\User');
     }
 
+    //get users associated with user
+
+    public function userRoles(){
+        return $this->hasMany('App\UserRole','role_id','id');
+    }
 
 }

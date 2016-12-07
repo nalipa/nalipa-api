@@ -18,7 +18,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return Transaction::all()->load('service_provider.utility_code');
+        return Transaction::all()->load('service_provider.utility_code','user');
     }
 
 
