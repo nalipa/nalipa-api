@@ -49,7 +49,7 @@ class UserController extends Controller
         if ($user->save()) {
 
             $user = User::find($user->id);
-            $user_role = UserRoles();
+            $user_role = new UserRoles();
             $user_role->user_id = $user->id;
             $user_role->role_id = 2; // client
 

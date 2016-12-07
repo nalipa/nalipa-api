@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('city_town');
             $table->string('country');
             $table->integer('security_question');
-            $table->integer('answer');
+            $table->string('answer');
             $table->boolean('receive_notification');
             $table->boolean('agreed_to_terms');
             $table->string('email')->unique();
